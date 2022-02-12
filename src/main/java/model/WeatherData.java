@@ -1,15 +1,20 @@
 package model;
 
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
-
+@Entity
+@Table(name = "weatherData")
 public class WeatherData {
-
+@Id
+@GeneratedValue(generator = "increment")
+@GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
-
-    private LocalDate date;
+@Temporal(TemporalType.TIMESTAMP)
+@Column(name = "checkedDate")
+    private Date date;
 
     private Double temperature;
 
@@ -27,7 +32,7 @@ public class WeatherData {
     public WeatherData() {
     }
 
-    public WeatherData(LocalDate date, Double temperature, String weather, Double pressure, Double humidity, Double windSpeed, City city) {
+    public WeatherData(Date date, Double temperature, String weather, Double pressure, Double humidity, Double windSpeed, City city) {
         this.date = date;
         this.temperature = temperature;
         this.weather = weather;
@@ -45,11 +50,11 @@ public class WeatherData {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

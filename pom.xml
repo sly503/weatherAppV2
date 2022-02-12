@@ -8,17 +8,31 @@
     <artifactId>WeatherAppV2</artifactId>
     <version>1.0-SNAPSHOT</version>
 <dependencies>
+
+    <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+        <version>3.1.0-RC2</version>
+    </dependency>
+
+
     <dependency>
         <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>6.0.0.CR1</version>
-        <type>pom</type>
+        <artifactId>hibernate-core-jakarta</artifactId>
+        <version>5.6.5.Final</version>
     </dependency>
+    <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+
+
 
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.27</version>
+        <version>8.0.28</version>
     </dependency>
 
     <dependency>
@@ -32,6 +46,7 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.13.1</version>
     </dependency>
+
 
 </dependencies>
     <properties>

@@ -1,9 +1,22 @@
 package model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "city")
 public class City {
+@Id
+@GeneratedValue(generator = "increment")
+@GenericGenerator(name = "increment", strategy = "increment")
 
+    private Long id;
     private String cityName;
     private String cityLon;
     private String cityLat;
@@ -15,6 +28,10 @@ public class City {
     }
 
     public City() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getCityName() {
@@ -44,19 +61,21 @@ public class City {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof City city)) return false;
-        return Objects.equals(cityName, city.cityName) && Objects.equals(cityLon, city.cityLon) && Objects.equals(cityLat, city.cityLat);
+        if (!(o instanceof City)) return false;
+        City city = (City) o;
+        return Objects.equals(id, city.id) && Objects.equals(cityName, city.cityName) && Objects.equals(cityLon, city.cityLon) && Objects.equals(cityLat, city.cityLat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cityName, cityLon, cityLat);
+        return Objects.hash(id, cityName, cityLon, cityLat);
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "cityName='" + cityName + '\'' +
+                "id=" + id +
+                ", cityName='" + cityName + '\'' +
                 ", cityLon='" + cityLon + '\'' +
                 ", cityLat='" + cityLat + '\'' +
                 '}';
