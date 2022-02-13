@@ -1,4 +1,4 @@
 # weatherApp
 Hibernate / jpa
 Jackson
-Pull weather data from openweathermap Api using Jackson and save in Mysql Database using Hibernate 
+Fetch weather data from openweathermap Api using Jackson and store it in Mysql Database using Hibernate .
