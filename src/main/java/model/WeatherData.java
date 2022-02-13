@@ -2,9 +2,10 @@ package model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
+
 @Entity
 @Table(name = "weatherData")
 public class WeatherData {
@@ -16,15 +17,15 @@ public class WeatherData {
 @Column(name = "checkedDate")
     private Date date;
 
-    private Double temperature;
+    private BigDecimal temperature;
 
     private String weather;
 
-    private Double pressure;
+    private BigDecimal pressure;
 
-    private Double humidity;
+    private BigDecimal humidity;
 
-    private Double windSpeed;
+    private BigDecimal windSpeed;
 
     @ManyToOne
     private City city;
@@ -34,12 +35,11 @@ public class WeatherData {
 
     public WeatherData(Date date, Double temperature, String weather, Double pressure, Double humidity, Double windSpeed, City city) {
         this.date = date;
-        this.temperature = temperature;
+        this.temperature = BigDecimal.valueOf(temperature);
         this.weather = weather;
-        this.pressure = pressure;
-        this.humidity = humidity;
-        this.windSpeed = windSpeed;
-        this.city = city;
+        this.pressure = BigDecimal.valueOf(pressure);
+        this.humidity = BigDecimal.valueOf(humidity);
+        this.windSpeed = BigDecimal.valueOf(windSpeed);
     }
 
     public Long getId() {
@@ -58,11 +58,11 @@ public class WeatherData {
         this.date = date;
     }
 
-    public Double getTemperature() {
+    public BigDecimal getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Double temperature) {
+    public void setTemperature(BigDecimal temperature) {
         this.temperature = temperature;
     }
 
@@ -74,37 +74,30 @@ public class WeatherData {
         this.weather = weather;
     }
 
-    public Double getPressure() {
+    public BigDecimal getPressure() {
         return pressure;
     }
 
-    public void setPressure(Double pressure) {
+    public void setPressure(BigDecimal pressure) {
         this.pressure = pressure;
     }
 
-    public Double getHumidity() {
+    public BigDecimal getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Double humidity) {
+    public void setHumidity(BigDecimal humidity) {
         this.humidity = humidity;
     }
 
-    public Double getWindSpeed() {
+    public BigDecimal getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(Double windSpeed) {
+    public void setWindSpeed(BigDecimal windSpeed) {
         this.windSpeed = windSpeed;
     }
 
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -132,4 +125,6 @@ public class WeatherData {
                 '}';
     }
 
+    public void setCity(City name) {
+    }
 }

@@ -30,6 +30,9 @@ public class City {
     public City() {
     }
 
+    public City(String name) {
+    }
+
     public Long getId() {
         return id;
     }
