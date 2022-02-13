@@ -1,6 +1,7 @@
 package model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class WeatherData {
     private BigDecimal humidity;
 
     private BigDecimal windSpeed;
-
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @ManyToOne
     private City city;
 
@@ -40,6 +41,23 @@ public class WeatherData {
         this.pressure = BigDecimal.valueOf(pressure);
         this.humidity = BigDecimal.valueOf(humidity);
         this.windSpeed = BigDecimal.valueOf(windSpeed);
+    }
+
+    public WeatherData(BigDecimal temperature, String weather, BigDecimal pressure, BigDecimal humidity, BigDecimal windSpeed, City city) {
+        this.temperature = temperature;
+        this.weather = weather;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        this.windSpeed = windSpeed;
+        this.city = city;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public Long getId() {
@@ -123,8 +141,5 @@ public class WeatherData {
                 ", windSpeed=" + windSpeed +
                 ", city=" + city +
                 '}';
-    }
-
-    public void setCity(City name) {
     }
 }
