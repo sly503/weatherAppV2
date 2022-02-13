@@ -3,21 +3,22 @@ import model.WeatherData;
 import service.JpaService;
 import java.io.IOException;
 
-import static service.JpaRepository.printCities;
-import static service.WeatherService.getWeatherData;
+import static serialiser.WeatherService.fetchWeatherData;
+import static service.utils.printCities;
 
 
 public class app {
-    private static JpaService jpaService = JpaService.getInstance();
+    private static final JpaService jpaService = JpaService.getInstance();
     public static void main(String[] args) throws IOException {
 
-        WeatherData weatherData = getWeatherData("Tirana");
+        WeatherData weatherData = fetchWeatherData("Tirana");
         try {
             jpaService.runInTransaction(entityManager -> {
                 entityManager.persist(weatherData);
                 return null;
             });
             printCities();
+
         } finally {
             jpaService.shutdown();
         }

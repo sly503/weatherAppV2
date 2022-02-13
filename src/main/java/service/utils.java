@@ -1,13 +1,14 @@
 package service;
 
 import model.City;
+import model.WeatherData;
 
 import java.util.List;
 
+public class utils {
 
-public class JpaRepository {
+    private static final JpaService jpaService = JpaService.getInstance();
 
-    private static JpaService jpaService = JpaService.getInstance();
 
     public static void printCities() {
         List<City> cities = jpaService.runInTransaction(entityManager ->
@@ -16,4 +17,5 @@ public class JpaRepository {
                 .map(city -> city.getCityName() + ": " + city.getCityLon() + ":" + city.getCityLat())
                 .forEach(System.out::println);
     }
+
 }
