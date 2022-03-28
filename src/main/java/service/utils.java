@@ -18,4 +18,36 @@ public class utils {
                 .forEach(System.out::println);
     }
 
+    public static void printWeatherData(String cityName) {
+        List<WeatherData> weatherData = jpaService.runInTransaction(entityManager ->
+                entityManager.createQuery("select w from WeatherData w where w.city.cityName=:cityName", WeatherData.class)
+                        .setParameter("cityName", cityName)
+                        .getResultList());
+        weatherData.stream()
+                .map(weatherData1 -> weatherData1.getCity().getCityName() + ": " + weatherData1.getTemperature() + ":" + weatherData1.getPressure() + ":" + weatherData1.getHumidity())
+                .forEach(System.out::println);
+    }
+
+    public static void printWeatherDataByCity(String cityName) {
+        List<WeatherData> weatherData = jpaService.runInTransaction(entityManager ->
+                entityManager.createQuery("select w from WeatherData w where w.city.cityName=:cityName", WeatherData.class)
+                        .setParameter("cityName", cityName)
+                        .getResultList());
+        weatherData.stream()
+                .map(weatherData1 -> weatherData1.getCity().getCityName() + ": " + weatherData1.getTemperature() + ":" + weatherData1.getPressure() + ":" + weatherData1.getHumidity())
+                .forEach(System.out::println);
+    }
+
+    //print weather data for a city by city name and temperature
+    public static void printWeatherDataByCityAndTemperature(String cityName, int temperature) {
+        List<WeatherData> weatherData = jpaService.runInTransaction(entityManager ->
+                entityManager.createQuery("select w from WeatherData w where w.city.cityName=:cityName and w.temperature=:temperature", WeatherData.class)
+                        .setParameter("cityName", cityName)
+                        .setParameter("temperature", temperature)
+                        .getResultList());
+        weatherData.stream()
+                .map(weatherData1 -> weatherData1.getCity().getCityName() + ": " + weatherData1.getTemperature() + ":" + weatherData1.
+    
+
+
 }

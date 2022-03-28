@@ -1,25 +1,26 @@
 package model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "city")
 public class City {
+
+@GenericGenerator(name = "increment", strategy = "increment")
 @Id
 @GeneratedValue(generator = "increment")
-@GenericGenerator(name = "increment", strategy = "increment")
 
-    private Long id;
+private Long id;
     private String cityName;
     private String cityLon;
     private String cityLat;
+    @OneToMany(mappedBy = "city")
+    private List<WeatherData> weatherData;
 
     public City(String cityName, String cityLon, String cityLat) {
         this.cityName = cityName;
@@ -32,6 +33,8 @@ public class City {
 
     public City(String name) {
     }
+
+
 
     public Long getId() {
         return id;

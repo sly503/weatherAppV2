@@ -12,9 +12,11 @@ public class app {
     public static void main(String[] args) throws IOException {
 
         WeatherData weatherData = fetchWeatherData("Tirana");
+        WeatherData weatherData2 = fetchWeatherData("London");
         try {
             jpaService.runInTransaction(entityManager -> {
                 entityManager.persist(weatherData);
+                entityManager.persist(weatherData2);
                 return null;
             });
             printCities();

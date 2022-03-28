@@ -12,7 +12,7 @@ import java.net.URL;
 public class WeatherService {
     public static WeatherData fetchWeatherData(String cityName) throws IOException {
 
-        String appId = "Insert your Api ID (Token) here";
+        String appId = "e0b05909c4c74435ac5117ce6d06f0f8";
     City city = new City();
     WeatherData weatherData = new WeatherData();
     ObjectMapper mapper = new ObjectMapper();

@@ -1,0 +1,6 @@
+serialiser/WeatherService.class
+model/City.class
+service/JpaService.class
+model/WeatherData.class
+app/app.class
+service/utils.class

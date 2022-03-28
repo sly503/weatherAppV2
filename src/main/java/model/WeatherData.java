@@ -29,6 +29,7 @@ public class WeatherData {
     private BigDecimal windSpeed;
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @ManyToOne
+    @JoinColumn(name = "cityId")
     private City city;
 
     public WeatherData() {
