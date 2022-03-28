@@ -26,6 +26,7 @@ public class JpaService {
         }
 
     }
+    
 
     public EntityManagerFactory getEntityManagerFactory(){
         return entityManagerFactory;
